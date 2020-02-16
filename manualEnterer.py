@@ -1,7 +1,11 @@
 import pandas as pd
 import openpyxl
 legaltags = ('health', 'finance', 'family loss', 'relationships',
-             'personal', 'pets', 'assault', 'harassment', 'anxiety')
+             'personal', 'pets', 'assault', 'harassment', 'anxiety', 'hl', 'fn', 'fl', 'rl', 'pr', 'pt', 'as', 'hr', 'an')
+
+
+def callHelp():
+    print(legaltags)
 
 
 def checkIf(tag):
@@ -13,7 +17,7 @@ def checkIf(tag):
         tag = str(tag).lower().strip()
         if checkForTag == tag:
             flag = 1
-    if flag is 0:
+    if flag == 0:
         return False
     return True
 
@@ -30,15 +34,18 @@ gender = ""
 answer = ""
 for x in taglist:
     if not checkIf(x):
-        print(x," ",sheet.cell(row=c, column=3).value)
         print(sheet.cell(row=c, column=1).value)
         print("Enter Gender.")
         gender = input()
         gender = gender.strip()
+        if gender == 'help':
+            callHelp()
+            gender = input()
         if gender == 'exit':
             break
         print("Enter tag.")
         answer = input()
+        answer = answer.strip()
         sheet.cell(row=c, column=2).value = gender
         sheet.cell(row=c, column=3).value = answer
     c += 1

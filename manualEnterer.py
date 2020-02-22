@@ -23,9 +23,9 @@ def checkIf(tag):
 
 
 data = pd.read_excel(
-    r'/media/mayank/10AD068510AD0685/DepressionTagging/analyse.xlsx')
+    r'./analyse.xlsx')
 srcfile = openpyxl.load_workbook(
-    '/media/mayank/10AD068510AD0685/DepressionTagging/analyse.xlsx', read_only=False, keep_vba=True)
+    './analyse.xlsx', read_only=False, keep_vba=True)
 sheet = srcfile.active
 tags = pd.DataFrame(data, columns=['Tags'])
 taglist = list(tags['Tags'])
@@ -51,4 +51,4 @@ for x in taglist:
         sheet.cell(row=c, column=2).value = gender
         sheet.cell(row=c, column=3).value = answer
     c += 1
-srcfile.save('/media/mayank/10AD068510AD0685/DepressionTagging/analyse.xlsx')
+srcfile.save('./analyse.xlsx')

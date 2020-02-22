@@ -32,8 +32,10 @@ taglist = list(tags['Tags'])
 c = 2
 gender = ""
 answer = ""
+clearline = "\n"*100
 for x in taglist:
     if not checkIf(x):
+        print (clearline)
         print(sheet.cell(row=c, column=1).value)
         print("Enter Gender.")
         gender = input()

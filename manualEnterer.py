@@ -37,11 +37,12 @@ gender = ""
 answer = ""
 clearline = "\n"*100
 for x in taglist:
-    if x in abtags:
+    if str(x).strip() in abtags:
         indexOftag = abtags.index(x)
         sheet.cell(row=c, column=3).value = fulltags[indexOftag]
-        c+=1
+    c+=1
 c = 2
+srcfile.save('./analyse.xlsx')
 for x in taglist:
     if not checkIf(x):
         print(clearline)

@@ -2,6 +2,9 @@ import pandas as pd
 import openpyxl
 legaltags = ('health', 'finance', 'family loss', 'relationships',
              'personal', 'pets', 'assault', 'harassment', 'anxiety', 'hl', 'fn', 'fl', 'rl', 'pr', 'pt', 'as', 'hr', 'an')
+fulltags = ('health', 'finance', 'family loss', 'relationships',
+            'personal', 'pets', 'assault', 'harassment', 'anxiety')
+abtags = ('hl', 'fn', 'fl', 'rl', 'pr', 'pt', 'as', 'hr', 'an')
 
 
 def callHelp():
@@ -34,8 +37,14 @@ gender = ""
 answer = ""
 clearline = "\n"*100
 for x in taglist:
+    if x in abtags:
+        indexOftag = abtags.index(x)
+        sheet.cell(row=c, column=3).value = fulltags[indexOftag]
+        c+=1
+c = 2
+for x in taglist:
     if not checkIf(x):
-        print (clearline)
+        print(clearline)
         print(sheet.cell(row=c, column=1).value)
         print("Enter Gender.")
         gender = input()
